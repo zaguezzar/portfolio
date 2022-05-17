@@ -1,6 +1,7 @@
 import { Flex, Icon, Box, Text, Heading, Image, Link } from '@chakra-ui/react'
 import { MdOutlineFacebook } from 'react-icons/md'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import img from '../assets/images/gaia.jpg'
 
 import '../index.css'
 
@@ -19,7 +20,7 @@ const Homepage = ({ colors, colorMode }) => {
                     <Heading fontWeight='semibold' fontSize={['md', '2xl']}>Aguezzar Zakaria</Heading>
                     <Text fontSize={['xs', 'md']}>Digital Craftsman (Designer, Developer)</Text>
                 </Flex>
-                <Image src='src/assets/images/gaia.jpg' boxSize={[10, 14]} borderRadius='50%' />
+                <Image src={img} boxSize={[10, 14]} borderRadius='50%' />
             </Flex>
             {/* who am I */}
             <Flex direction='column' gap={2}>
