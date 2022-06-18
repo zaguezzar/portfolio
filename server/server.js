@@ -1,26 +1,26 @@
-import express from 'express' 
-import cors from 'cors'
-import mongoose from 'mongoose'
-import bodyParser from 'body-parser'
+import express from "express"
+import cors from "cors"
+import mongoose from "mongoose"
+import bodyParser from "body-parser"
 
-import postRoutes from './routes/postRoutes.js'
-import projectRoutes from './routes/projectRoutes.js'
+import postRoutes from "./routes/postRoutes.js"
+import projectRoutes from "./routes/projectRoutes.js"
 
-import 'dotenv/config'
+import "dotenv/config"
 
-// initialising the app 
+// initialising the app
 const app = express()
 
 // binding cors
 app.use(cors())
 
-// binding middleware to parse data 
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
-app.use(bodyParser.json({ limit: '10mb', extended: true }))
+// binding middleware to parse data
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }))
+app.use(bodyParser.json({ limit: "10mb", extended: true }))
 
-// routing 
-app.use('/posts', postRoutes)
-app.use('/projects', projectRoutes)
+// routing
+app.use("/posts", postRoutes)
+app.use("/projects", projectRoutes)
 
 // destructuring the env object
 const { PORT, DB_URL } = process.env
@@ -28,13 +28,15 @@ const { PORT, DB_URL } = process.env
 // connecting to the database
 const CONNECTION_URL = `${DB_URL}/portfolio`
 const CONNECTION_PORT = PORT | 5000
-const OPTIONS = { 
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+const OPTIONS = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 }
 mongoose
   .connect(CONNECTION_URL, OPTIONS)
-  .then(() => app.listen(CONNECTION_PORT, () => console.log(`Server running on port ${CONNECTION_PORT}...`)))
-  .catch(err => console.log(err.message))
-
-
+  .then(() =>
+    app.listen(CONNECTION_PORT, () =>
+      console.log(`Server running on port ${CONNECTION_PORT}...`)
+    )
+  )
+  .catch((err) => console.log(err.message))
